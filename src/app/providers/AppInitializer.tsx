@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
-import { useMeQuery } from '@/pages/sign-in/hooks/useMeQuery';
+// import { useAuthStore } from '@/shared/store/useAuthStore';
 import { useSSE } from '@/shared/hooks/useSSE';
-import { useAuthStore } from '@/shared/store/useAuthStore';
+
+import { useMeQuery } from '../hooks/useMeQuery';
 
 /**
  * AppInitializer
@@ -19,14 +20,14 @@ import { useAuthStore } from '@/shared/store/useAuthStore';
 export function AppInitializer() {
   const { data: user } = useMeQuery();
   console.log('🚀 ~ AppInitializer ~ user:', user);
-  const { setUserState, resetAuthState } = useAuthStore();
+  // const { setUser, clearUser } = useAuthStore();
 
-  useSSE();
+  // useSSE();
 
-  useEffect(() => {
-    if (user) setUserState(user);
-    else resetAuthState();
-  }, [resetAuthState, setUserState, user]);
+  // useEffect(() => {
+  //   if (user) setUser(user);
+  //   else clearUser();
+  // }, [clearUser, setUser, user]);
 
   return null; // 또는 글로벌 로딩 스피너
 }
